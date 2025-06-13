@@ -4,11 +4,9 @@ import json
 
 app = Flask(__name__)
 
-
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
-    return "Fernet Encryptor is running."
-
+    return "Fernet Encryptor is running!"
 
 @app.route("/encrypt", methods=["POST"])
 def encrypt():
@@ -25,7 +23,6 @@ def encrypt():
         return jsonify({"token": token})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
 
 if __name__ == "__main__":
     app.run()
